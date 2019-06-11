@@ -1,5 +1,6 @@
 package pe.grupo3.bustec.controladores;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,11 @@ import pe.grupo3.bustec.repositories.ViajeRepository;
 public class ViajeController {
 		@Autowired
 		private ViajeRepository viajeRepository;
+		
+		@GetMapping(path = "/")
+		public @ResponseBody List<Viaje> imprimirViajes(){
+			return viajeRepository.findAll();
+		}
 		
 		@GetMapping(path = "/{id}")
 		public @ResponseBody Optional<Viaje> imprimirViajesPorId(@PathVariable(name="id") Long viaje_id){
